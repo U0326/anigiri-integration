@@ -1,0 +1,9 @@
+[submodule "anigiri-db"]
+	path = anigiri-db
+	url = https://github.com/U0326/anigiri-db.git
+[submodule "anigiri-web"]
+	path = anigiri-web
+	url = https://github.com/U0326/anigiri-web.git
+[submodule "anigiri-crawler"]
+	path = anigiri-crawler
+	url = https://github.com/U0326/anigiri-crawler.git
