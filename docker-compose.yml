@@ -4,9 +4,9 @@ services:
     build: './anigiri-db'
     ports:
       - '3306:3306'
-    # 注) データを永続化する為にホスト側に"~/garaku/anigiri/mysql"ディレクトリを用意する必要がある。
+    # 注) データを永続化する為にホスト側に"~/data/anigiri/mysql"ディレクトリを用意する必要がある。
     volumes:
-      - "~/graku/anigiri/mysql:/var/lib/mysql"
+      - "~/data/anigiri/mysql:/var/lib/mysql"
 
   anigiri-crawler:
     build: './anigiri-crawler'
