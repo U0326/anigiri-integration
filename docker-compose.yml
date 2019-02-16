@@ -23,4 +23,9 @@ services:
     volumes:
       - './log/web:/var/log/anigiri'
     command: gradle bootRun
+    # "docker-compose --compatibility xxx"とすることで以下設定を有効化できる。
+    deploy:
+      resources:
+        limits:
+          memory: 600m
 
