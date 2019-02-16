@@ -2,11 +2,11 @@ version: '3'
 services:
   anigiri-db:
     build: './anigiri-db'
-    ports:
-      - '3306:3306'
+    expose:
+      - '3306'
     # 注) データを永続化する為にホスト側に"~/data/anigiri/mysql"ディレクトリを用意する必要がある。
     volumes:
-      - "~/data/anigiri/mysql:/var/lib/mysql"
+      - './data/mysql:/var/lib/mysql'
 
   anigiri-crawler:
     build: './anigiri-crawler'
@@ -20,5 +20,7 @@ services:
       - '8080:8080'
     links:
       - 'anigiri-db'
+    volumes:
+      - './log/web:/var/log/anigiri'
     command: gradle bootRun
 
