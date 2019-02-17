@@ -4,7 +4,6 @@ services:
     build: './anigiri-db'
     expose:
       - '3306'
-    # 注) データを永続化する為にホスト側に"~/data/anigiri/mysql"ディレクトリを用意する必要がある。
     volumes:
       - './data/mysql:/var/lib/mysql'
 
@@ -23,9 +22,4 @@ services:
     volumes:
       - './log/web:/var/log/anigiri'
     command: gradle bootRun
-    # "docker-compose --compatibility xxx"とすることで以下設定を有効化できる。
-    deploy:
-      resources:
-        limits:
-          memory: 600m
 
