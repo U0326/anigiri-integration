@@ -1,9 +1,10 @@
 version: '3'
 services:
+  # "docker-compose run --service-ports anigiri-xxx"とすることでports設定が反映される。
   anigiri-db:
     build: './anigiri-db'
-    expose:
-      - '3306'
+    ports:
+      - '13306:3306'
     volumes:
       - './data/mysql:/var/lib/mysql'
 
@@ -15,11 +16,10 @@ services:
   anigiri-web:
     build: './anigiri-web'
     ports:
-      - '80:80'
       - '8080:8080'
     links:
       - 'anigiri-db'
     volumes:
       - './log/web:/var/log/anigiri'
-    command: gradle bootRun
+    command: ./gradlew bootRun
 
