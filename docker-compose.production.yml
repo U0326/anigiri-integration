@@ -14,11 +14,18 @@ services:
 
   anigiri-web:
     build: './anigiri-web'
-    ports:
-      - '80:80'
+    expose:
+      - '80'
     links:
       - 'anigiri-db'
     volumes:
       - './log/web:/var/log/anigiri'
+    environment:
+      VIRTUAL_HOST: anigiri.garaku.work
     command: ./gradlew bootRun -Penv=pro
+
+networks:
+  default:
+    external:
+      name: proxy_link
 
